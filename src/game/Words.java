@@ -36,11 +36,24 @@ public class Words {
 		return word.toString();
 	}
 	
-	public void guess(char letter) {
+	public boolean isGuessRight(){
+		for(char letter: letters){
+			if(letter == '\u0000'){
+				return false;
+			}
+		}
+		return true;
+	}
+	
+	public boolean guess(char letter) {
+		boolean guessedRight = false;
+		
 		for (int i = 0; i < selectedWord.length(); i++) {
 			if (letter == selectedWord.charAt(i)) {
 				letters[i] = letter;
+				guessedRight = true;
 			}
 		}
+		return guessedRight;
 	}
 }
